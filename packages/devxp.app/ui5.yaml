@@ -1,0 +1,55 @@
+specVersion: "3.0"
+metadata:
+  name: devxp.app
+type: application
+framework:
+  name: OpenUI5
+  version: "1.124.0"
+  libraries:
+    - name: sap.m
+    - name: sap.ui.core
+    - name: themelib_sap_horizon
+builder:
+  settings:
+    includeDependency:
+      - "devxp.lib"
+  customTasks:
+    - name: ui5-task-zipper
+      afterTask: generateVersionInfo
+    - name: ui5-tooling-modules-task
+      beforeTask: replaceVersion
+      configuration:
+        addToNamespace: true
+    - name: ui5-tooling-transpile-task
+      afterTask: ui5-tooling-modules-task
+      configuration:
+        addToNamespace: true
+server:
+  customMiddleware:
+    - name: ui5-tooling-modules-middleware
+      afterMiddleware: compression
+    - name: ui5-tooling-transpile-middleware
+      afterMiddleware: ui5-tooling-modules-middleware
+    - name: ui5-middleware-ui5
+      afterMiddleware: compression
+    #- name: ui5-middleware-servestatic
+    #  afterMiddleware: compression
+    #  mountPath: /resources/marked
+    #  configuration:
+    #    npmPackagePath: "marked"
+    - name: ui5-middleware-servestatic
+      afterMiddleware: compression
+      mountPath: /docs
+      configuration:
+        rootPath: "../../docs"
+    - name: ui5-middleware-serveframework
+      afterMiddleware: compression
+    - name: ui5-middleware-simpleproxy
+      afterMiddleware: compression
+      mountPath: /openui5sdk
+      configuration:
+        baseUri: "https://sdk.openui5.org/"
+    - name: "@ui5/middleware-code-coverage"
+      afterMiddleware: compression
+    - name: ui5-middleware-livereload
+      afterMiddleware: compression

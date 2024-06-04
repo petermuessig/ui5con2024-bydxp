@@ -1,0 +1,17 @@
+{
+  "generator-ui5-app": {
+    "namespace": "devxp.comp",
+    "framework": "OpenUI5",
+    "frameworkVersion": "1.124.0",
+    "author": "Peter Muessig",
+    "initrepo": false,
+    "appId": "devxp.comp",
+    "appURI": "devxp/comp",
+    "cdnDomain": "sdk.openui5.org",
+    "defaultTheme": "sap_horizon",
+    "qunitCoverageFile": "qunit-coverage-istanbul.js",
+    "gte1_98_0": true,
+    "gte1_104_0": true,
+    "setupCompleted": true
+  }
+}

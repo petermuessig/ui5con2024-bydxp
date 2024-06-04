@@ -1,0 +1,32 @@
+<mvc:View
+	controllerName="devxp.app.controller.Main"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+  xmlns:control="devxp.app.control"
+	core:require="{
+		formatter: 'devxp/app/model/formatter'
+	}">
+
+<Page title="{i18n>appTitle}" id="page">
+  <content>
+    <Button id="navToLib"
+      text="{formatter: 'formatter.formatValue', path: 'i18n>btnNavToLib'}"
+      press="navTo('lib')" />
+    <Button id="navToComp"
+      text="{formatter: 'formatter.formatValue', path: 'i18n>btnNavToComp'}"
+      press="navTo('comp')" />
+    <control:MDViewer id="mdViewer" />
+    <control:NewMDViewer id="mdViewerNew" content="*Hello World*" />
+    <List id="versionList" items="{/}">
+      <items>
+        <StandardListItem
+          title="{version}"
+          description="{= ${support} }" />
+      </items>
+    </List>
+  </content>
+</Page>
+
+</mvc:View>

@@ -1,0 +1,24 @@
+<mvc:View
+	controllerName="devxp.app.controller.Lib"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+  xmlns:devxplib="devxp.lib"
+	core:require="{
+		formatter: 'devxp/app/model/formatter'
+	}">
+
+	<Page
+		title="{i18n>appTitle}"
+		id="page">
+		<content>
+      <Button
+        id="navBackButton"
+        text="{formatter: 'formatter.formatValue', path: 'i18n>btnNavBack'}"
+        press="onNavBack"/>
+      <devxplib:Example text="Hello Control" />
+		</content>
+	</Page>
+
+</mvc:View>

@@ -1,0 +1,14 @@
+{
+  "name": "boost-your-devxp",
+  "description": "Mono repo to showcase selected UI5 Tooling Extensions",
+  "private": true,
+  "scripts": {
+    "build": "npm run build -w devxp.app",
+    "build:comp": "npm run build -w devxp.comp",
+    "build:lib": "npm run build -w devxp.lib",
+    "start": "npm run start -w devxp.app",
+    "start:comp": "npm run start -w devxp.comp",
+    "start:lib": "npm run start -w devxp.lib"
+  },
+  "workspaces": [ "packages/*" ]
+}

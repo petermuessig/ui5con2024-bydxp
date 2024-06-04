@@ -1,0 +1,17 @@
+specVersion: "3.0"
+metadata:
+  name: devxp.lib
+type: library
+framework:
+  name: OpenUI5
+  version: 1.124.0
+  libraries:
+    - name: sap.ui.core
+    - name: themelib_sap_horizon
+    - name: themelib_sap_fiori_3
+server:
+  customMiddleware:
+    - name: "@ui5/middleware-code-coverage"
+      afterMiddleware: compression
+    - name: ui5-middleware-livereload
+      afterMiddleware: compression
